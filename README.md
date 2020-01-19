@@ -14,11 +14,19 @@
 
 > Simple Golang microservice using Gin
 
-## Install
+## Run locally for development
+
+```sh
+make local
+```
+
+## Create deployment packages
 
 ```sh
 make build
 ```
+
+> OUTPUT: /bin/app
 
 ## Usage
 

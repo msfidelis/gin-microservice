@@ -2,7 +2,7 @@
 
 local:
 	dep ensure
-	go build -ldflags="-s -w" -o bin/app main.go
+	docker-compose up --force-recreate
 
 build-docker:
 	dep ensure
