@@ -1,12 +1,11 @@
 .PHONY: build local
 
-local:
+dev:
 	dep ensure
 	docker-compose up --force-recreate
 
 build-docker:
-	dep ensure
-	env GOOS=linux go build -ldflags="-s -w" -o bin/app main.go
+	docker build -t gin-microservice .
 
 clean:
 	rm -rf ./bin

@@ -17,7 +17,7 @@
 ## Run locally for development
 
 ```sh
-make local
+make dev
 ```
 
 ## Create deployment packages
