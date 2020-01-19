@@ -14,7 +14,7 @@ services:
     redis:
         image: redis:4.0.14-alpine
         ports:
-            - 9200:9200
+            - 6379:6379
         networks:
             - developer
 
