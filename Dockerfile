@@ -9,7 +9,7 @@ WORKDIR /go/src/app
 COPY Gopkg.toml Gopkg.lock ./
 RUN dep ensure --vendor-only
 COPY . ./
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.ENV prod" -a -installsuffix nocgo -o /app .
 
 FROM scratch
 COPY --from=builder /app ./
