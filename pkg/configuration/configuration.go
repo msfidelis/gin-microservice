@@ -1,25 +1,29 @@
 package configuration
 
 import (
+	"fmt"
 	"os"
+	"strings"
 
 	"github.com/tkanos/gonfig"
 )
 
 type Configuration struct {
-	Port int
+	Port     int
+	RedisURL string
 }
 
-func New(tableName string) Configuration {
+func Load() Configuration {
 	configuration := Configuration{}
-
 	env := os.Getenv("ENVIRONMENT")
-
-	if env == nil {
-		env = "PROD"
+	if env == "" {
+		env = "prod"
 	}
-
-	path := "loko"
-
-	err := gonfig.GetConf("path/to/myjonfile.json", &configuration)
+	path := fmt.Sprintf("configs/%s.json", strings.ToLower(env))
+	fmt.Println(path)
+	err := gonfig.GetConf(path, &configuration)
+	if err != nil {
+		panic(err)
+	}
+	return configuration
 }

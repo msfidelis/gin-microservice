@@ -1,8 +1,8 @@
 package main
 
 import "github.com/gin-gonic/gin"
-import "app/pkg/controllers/access"
-import "app/pkg/controllers/healthcheck"
+import "app/controllers/access"
+import "app/controllers/healthcheck"
 
 func main() {
 

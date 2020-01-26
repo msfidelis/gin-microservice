@@ -1,13 +1,20 @@
 package access
 
-import "github.com/gin-gonic/gin"
-import "github.com/go-redis/redis"
+import (
+	"app/pkg/configuration"
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis"
+)
 
 // GET /ping
 func Ping(c *gin.Context) {
 
+	configs := configuration.Load()
+	fmt.Println(configs.RedisURL)
 	client := redis.NewClient(&redis.Options{
-		Addr:     "redis:6379",
+		Addr:     configs.RedisURL,
 		Password: "",
 		DB:       0,
 	})
